@@ -3,7 +3,7 @@ import sys
 import json
 import time
 import tensorflow as tf
-from tensorflow.python.ops import rnn, rnn_cell
+from tensorflow.contrib import rnn
 from tensorflow.examples.tutorials.mnist import input_data
 
 n_input = 28 # MNIST data input (img shape: 28*28)
@@ -17,8 +17,8 @@ def rnn_model(x, weights, biases):
 	x = tf.reshape(x, [-1, n_input])
 	x = tf.split(0, n_steps, x)
 
-	lstm_cell = rnn_cell.BasicLSTMCell(n_hidden, forget_bias=1.0)
-	outputs, states = rnn.rnn(lstm_cell, x, dtype=tf.float32)
+	lstm_cell = rnn.BasicLSTMCell(n_hidden)
+        outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
 	return tf.matmul(outputs[-1], weights) + biases
 
 def train():
@@ -36,7 +36,7 @@ def train():
 	biases = tf.Variable(tf.random_normal([n_classes]), name='biases')
 
 	pred = rnn_model(x, weights, biases)
-	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(pred, y))
+	cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=pred, labels=y))
 	optimizer = tf.train.AdamOptimizer(learning_rate=params['learning_rate']).minimize(cost)
 
 	correct_pred = tf.equal(tf.argmax(pred,1), tf.argmax(y,1))
