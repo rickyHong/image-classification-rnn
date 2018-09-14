@@ -18,7 +18,7 @@ def rnn_model(x, weights, biases):
 	x = tf.split(0, n_steps, x)
 
 	lstm_cell = rnn.BasicLSTMCell(n_hidden)
-        outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
+	outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
 	return tf.matmul(outputs[-1], weights) + biases
 
 def train():
