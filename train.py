@@ -15,7 +15,7 @@ def rnn_model(x, weights, biases):
 	"""RNN (LSTM or GRU) model for image"""
 	x = tf.transpose(x, [1, 0, 2])
 	x = tf.reshape(x, [-1, n_input])
-	x = tf.split(0, n_steps, x)
+	x = tf.split(x, n_steps, 0)
 
 	lstm_cell = rnn.BasicLSTMCell(n_hidden)
 	outputs, states = rnn.static_rnn(lstm_cell, x, dtype=tf.float32)
