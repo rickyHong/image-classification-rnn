@@ -25,3 +25,10 @@
 
 ### Reference:
  - [Recurrent Neural Network](https://github.com/aymericdamien/TensorFlow-Examples/blob/master/examples/3_NeuralNetworks/recurrent_network.py)
+ 
+ ### Cuda purge
+
+dpkg -l | grep cuda- | awk '{print $2}' | xargs -n1 sudo dpkg --purge
+dpkg --install cuda-repo-ubuntu*-8.0-local*.deb
+sudo apt-get update
+sudo apt-get install cuda
