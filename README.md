@@ -2,6 +2,8 @@
 
 ### next_batch : https://stackoverflow.com/questions/45110098/tensorflow-next-batch-function-of-np-array/45110647?noredirect=1#comment77193477_45110647
 
+## https://www.researchgate.net/post/How_to_create_MNIST_type_database_from_images
+
 ### Highlights:
 
  - This is a **multi-class image classification** problem.
