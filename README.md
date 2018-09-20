@@ -4,6 +4,8 @@
 
 ## https://www.researchgate.net/post/How_to_create_MNIST_type_database_from_images
 
+## Models : https://www.tensorflow.org/api_docs/python/tf/contrib/rnn/BasicLSTMCell
+
 ### Highlights:
 
  - This is a **multi-class image classification** problem.
